@@ -6,7 +6,7 @@ tab:unnamed-chunk-411
 fig:unnamed-chunk-443
 tab:unnamed-chunk-671
 tab:unnamed-chunk-875
-о-курсе
+about-the-online-book
 intro
 install
 rstudio
@@ -190,6 +190,8 @@ quest_practices
 reproducible
 stat_power
 tasks
+task_begin
+task_new_vecs
 task_coer
 task_vec_ion
 task_vec_ind
@@ -218,7 +220,8 @@ backpack_tasks
 cov_tasks
 cor_tasks
 solutions
-solution_coer
+solution_begin
+solution_new_vecs
 solution_vec_ion
 solution_vec_ind
 solution_matrix

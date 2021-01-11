@@ -1,5 +1,5 @@
 --- 
-title: "Анализ данных и статистика в R"
+title: "Data analysis and statistics in R"
 author: "Поздняков Иван"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -12,8 +12,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-# О курсе
+# About the online book
 
-Здесь будут материалы для курса "Анализ данных и статистика в R". Эта онлайн-книжка будет постоянно пополняться, поэтому следите за обновлениями!
+This online book contains lecture notes and exercises to learn R and statistics either as a supplementary for the course or for self-learning.
 
-По всем вопросам пишите на мне на почту `ivanspozdniakov@gmail.com`, [VK](https://vk.com/id247411462) или в Telegram:`@pozdniakovivan`.
+If you have any questions, write me: `ivanspozdniakov@gmail.com` or [VK](https://vk.com/id247411462).
