@@ -1,36 +1,35 @@
-# Введение в R {#intro}
+# Install R {#intro}
 
-## Установка R и Rstudio {#install}
+## Install R & Rstudio {#install}
 
-Для работы с R необходимо его сначала скачать и установить.
+You need to download and install R first.
 
 * R
-    + [на Windows](https://cran.r-project.org/bin/windows/base/), найдите большую кнопку **Download R (номер версии) for Windows.**
-    + [на Mac](https://cran.r-project.org/bin/macosx/), если маку меньше, чем 5 лет, то смело ставьте *.pkg файл с последней версией. Если старше, то поищите на той же странице версию для вашей системы.
-    + [на Linux](https://cran.rstudio.com/bin/linux/), также можно добавить зеркало и установить из командной строки:
+    + [Windows](https://cran.r-project.org/bin/windows/base/), find a big button **Download R (version number) for Windows.**
+    + [Mac](https://cran.r-project.org/bin/macosx/), if your Mac computer is less than 5 years old, you can just download and install the last version of .pkg. If your Mac is older than that, find the appropriate version on the same page depending on your version of macOS.
+    + [на Linux](https://cran.rstudio.com/bin/linux/), or you can add mirror and download R from the terminal:
     
 ```
 sudo apt-get install r-cran-base
 ```
 
-В данной книге используется следующая версия R:
+We use this version of R for this book:
 
 ```{r}
 sessionInfo()$R.version$version.string
 ```
 
-После установки R необходимо скачать и установить RStudio:  
+After you download and install R on your system, you need to download and install RStudio:
 
 * [RStudio](https://www.rstudio.com/products/rstudio/download/)
 
-Если вдруг что-то установить не получается (или же вы просто не хотите устанавливать на компьютер лишние программы), то можно работать в облаке, делая все то же самое в веб-браузере:
+If you cannot install R and RStudio for whatever reason, you can run RStudio in a cloud using web-browser:
 
 * [RStudio cloud](https://rstudio.cloud/)
 
-Первый и вполне закономерный вопрос: зачем мы ставили R и отдельно еще какой-то RStudio?
-Если опустить незначительные детали, то R --- это сам язык программирования, а RStudio --- это среда (IDE), которая позволяет в этом языке очень удобно работать. 
+The first and very logical question: why do we install both R and RStudio? In brief, R is a programming language, but RStudio is an Integrated Development Environment (IDE) -- a program that makes working with this programming language easy and comfortable.
 
-> RStudio --- это не единственная среда для R, но, определенно, самая удобная на сегодняшний день. Почти все пользуются именно ею и не стоит тратить время на поиск чего-то более удобного и лучшего. Если же вы привыкли работать с Jupyter Notebook, то в R обычно вместо него используется великолепный RMarkdown --- с помощью которого и написан этот онлайн-учебник, кстати говоря. И с RMarkdown мы тоже будем разбираться!
+> RStudio is not the only IDE for R, but it is definetily the best one. Almost everyone use it for R and you don't need to spend time to find the better solution. If you are used to use Jupyter Notebook, you will learn to use wonderful RMarkdown (that was used to write this online-book) instead and we learn Rmarkdown later. 
 
 ## Знакомство с RStudio {#rstudio}
 
