@@ -195,6 +195,7 @@ task_new_vecs
 task_coer
 task_vec_ion
 task_vec_ind
+task_na
 task_matrix
 task_list
 task_df
@@ -224,6 +225,7 @@ solution_begin
 solution_new_vecs
 solution_vec_ion
 solution_vec_ind
+solution_na
 solution_matrix
 solution_list
 solution_df

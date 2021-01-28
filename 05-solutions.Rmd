@@ -259,180 +259,180 @@ sum((3 * (1:10) - 2) / 3 ^ (0:9))
 sum((3 * (1:10) - 2) / 3 ^ (0:9) > 0.5)
 ```
 
-## Индексирование векторов {#solution_vec_ind}
+## Indexing vectors {#solution_vec_ind}
 
-- Создайте вектор `troiki` со значениями 3, 6, 9, ..., 24, 27.
+- Create a vector `troiki` with values 3, 6, 9, ..., 24, 27.
 
 ```{r}
 troiki <- seq(3, 27, 3)
 troiki
 ```
 
-- Извлеките 2, 5 и 7 значения вектора `troiki`.
+- Extract the 2nd, 5th and 7th value from the vector `troiki`.
 
 ```{r}
 troiki[c(2, 5, 7)]
 ```
 
-- Извлеките предпоследнее значение вектора `troiki`.
+- Extract the last but one value from the vector `troiki`.
 
 ```{r}
 troiki[length(troiki) - 1]
 ```
 
-- Извлеките все значения вектора `troiki` *кроме* предпоследнего:
+- Exctract all values *except* the last but one from the vector `troiki`:
 
 ```{r}
 troiki[-(length(troiki) - 1)]
 ```
 
-Создайте вектор `vec3`:
+- Create a vector `vec3`:
 
 ```{r, echo = TRUE}
 vec3 <- c(3, 5, 2, 1, 8, 4, 9, 10, 3, 15, 1, 11)
 ```
 
-- Найдите второй элемент вектора `vec3`.
+- Find the second value of the vector `vec3`.
 
 ```{r}
 vec3[2]
 ```
 
-- Верните второй и пятый элемент вектора `vec3`.
+- Find the 2nd and the 5th value from the vector `vec3`.
 
 ```{r}
 vec3[c(2, 5)]
 ```
 
-- Попробуйте извлечь сотое значение вектора `vec3`:
+- Try to extract the 100th value of the vector `vec3`:
 
 ```{r}
 vec3[100]
 ```
 
-- Верните все элементы вектора `vec3` *кроме* второго элемента.
+- Return all values from the vector `vec3` *except* the second one.
 
 ```{r}
 vec3[-2]
 ```
 
-- Верните все элементы вектора `vec3` *кроме* второго и пятого элемента.
+- Return all values from the vector `vec3` *except* the second and the fifth values.
 
 ```{r}
 vec3[c(-2, -5)]
 ```
 
-- Найдите последний элемент вектора `vec3`.
+- Find the last value of the vector `vec3`.
 
 ```{r}
 vec3[length(vec3)]
 ```
 
-- Верните все значения вектора `vec3` кроме первого и последнего.
+- Return all the values of the vector `vec3` *except* the first one and the last one.
 
 ```{r}
 vec3[c(-1, -length(vec3))]
 ```
 
-- Найдите все значения вектора `vec3`, которые больше 4.
+- Find all values of the vector `vec3`, that are more than 4.
 
 ```{r}
 vec3[vec3 > 4]
 ```
 
-- Найдите все значения вектора `vec3`, которые больше 4, но меньше 10.
+- Find all values of the vector `vec3`, that are more than 4 but less than 10.
 
-> Если хотите сделать это в одну строчку, то вам помогут логические операторы!
+> Use logical operators if you want to do the task in one line of code!
 
 ```{r}
 vec3[vec3 > 4 & vec3 < 10]
 ```
 
-- Найдите все значения вектора `vec3`, которые меньше 4 или больше 10.
+- Find all values of the vector `vec3`, that are less than 4 or more than 10.
 
 ```{r}
 vec3[vec3 < 4 | vec3 > 10]
 ```
 
-- Возведите в квадрат каждое значение вектора `vec3`.
+- Return squares for each value of the vector `vec3`.
 
 ```{r}
 vec3 ^ 2
 ```
 
-- *Возведите в квадрат каждое значение вектора на нечетной позиции и извлеките корень из каждого значения на четной позиции вектора `vec3`.
+- *Calculate square for each value in odd position and calculate square root for each value in even position of the vector `vec3`.
 
-> Извлечение корня - это то же самое, что и возведение в степень 0.5.
+> Calculating square root is identical to calculating of power of 0.5.
 
 ```{r}
 vec3 ^ c(2, 0.5)
 ```
 
-- Создайте вектор 2, 4, 6,  ... , 18, 20 как минимум 2 новыми способами.
+- Create a vector 2, 4, 6,  ... , 18, 20 by two other ways.
 
-> Знаю, это задание может показаться бессмысленным, но это очень базовая операция, с помощью которой можно, например, разделить данные на две части. Чем больше способов Вы знаете, тем лучше!
+> The more ways to solve a problems you know the better.
 
 ```{r}
 (1:20)[c(FALSE,TRUE)]
 #(1:10)*2
 ```
 
-##Работа с пропущенными значениями {#solution_na}
+## Missing values {#solution_na}
 
-- Создайте вектор `vec4` со значениями 300, 15, 8, 2, 0, 1, 110:
+- Create a vector `vec4` with values 300, 15, 8, 2, 0, 1, 110:
 
 ```{r, echo = TRUE}
 vec4 <- c(300, 15, 8, 20, 0, 1, 110)
 vec4
 ```
 
-- Замените все значения `vec4`, которые больше 20 на `NA`.
+- Replace all values of the vector `vec4` that are greater than 20 with `NA`.
 
 ```{r}
 vec4[vec4 > 20] <- NA
 ```
 
-- Проверьте полученный вектор `vec4`:
+- Check the vector `vec4`:
 
 ```{r}
 vec4
 ```
 
-- Посчитайте сумму `vec4` с помощью функции `sum()`. Ответ `NA` не считается!
+- Sum over the vector `vec4` using function `sum()`. The answer `NA` is not a valid answer!
 
 ```{r}
 sum(vec4, na.rm = TRUE)
 ```
 
-## Матрицы {#solution_matrix}
+## Matrix {#solution_matrix}
 
-- Создайте матрицу 4х4, состоящую из единиц. Назовите ее `M1`.
+- Create a 4x4 matrix `M1` containing ones.  
 
 ```{r}
 M1 <- matrix(rep(1, 16), ncol = 4)
 M1
 ```
 
-- Поменяйте все некрайние значения матрицы `M1` (то есть значения на позициях [2,2], [2,3], [3,2] и [3,3]) на число 2.
+- Replace all values of M1 that are not on the border (i.e. on positions [2,2], [2,3], [3,2] and [3,3]) with 2.
 
 ```{r}
 M1[2:3, 2:3] <- 2
 M1
 ```
 
-- Выделите второй и третий столбик из матрицы `M1`.
+- Return the second and the third columns of the matrix `M1`.
 
 ```{r}
 M1[,2:3]
 ```
 
-- Сравните (`==`) вторую колонку и вторую строчку матрицы `M1`.
+- Compare (`==`) the second column and the second row of the matrix `M1`.
 
 ```{r}
 M1[,2] == M1[2,]
 ```
 
-- *Создайте таблицу умножения (9х9) в виде матрицы. Сохраните ее в переменную `mult_tab`.
+- *Create the multiplication table (9х9) as a matrix `mult_tab`.
 
 ```{r}
 mult_tab <- matrix(rep(1:9, rep(9,9))*(1:9), nrow = 9)
@@ -443,21 +443,21 @@ mult_tab
 #1:9 %o% 1:9
 ```
 
-- *Из матрицы `mult_tab` выделите подматрицу, включающую в себя только строчки с 6 по 8 и столбцы с 3 по 7.
+- *Select a smaller matrix from the matrix `mult_tab` that contains only rows from 6 to 8 and columns from 3 to 7.
 
 ```{r}
 mult_tab[6:8, 3:7]
 ```
 
-- *Создайте матрицу с логическими значениями, где `TRUE`, если в этом месте в таблице умножения (`mult_tab`) двузначное число и `FALSE`, если однозначное.
+- *Create a logical matrix with `TRUE` if there is a two-digit number on a corresponding position of the matrix `mult_tab` and `FALSE` otherwise.
 
-> Матрица - это почти вектор. К нему можно обращаться с единственным индексом.
+> Matrix is basically a vector. You can work with a matrix the same way you work with a vector --- with the only one index.
 
 ```{r}
 mult_tab >= 10
 ```
 
-- *Создайте матрицу `mult_tab2`, в которой все значения `tab` меньше 10 заменены на 0.
+- *Create a matrix `mult_tab2` from the matrix `mult_tab` where all values that are less than 0 replaced with 10.
 
 ```{r}
 mult_tab2 <- mult_tab
@@ -465,42 +465,42 @@ mult_tab2[mult_tab < 10] <- 0
 mult_tab2
 ```
 
-## Списки {#solution_list}
+## List {#solution_list}
 
-Дан список `list1`:
+Create a list `list1`:
 
 ```{r, echo = TRUE}
 list1 = list(numbers = 1:5, letters = letters, logic = TRUE)
 list1
 ```
 
-- Найдите первый элемент списка `list1`. Ответ должен быть списком длиной один.
+- Find the first element of the list `list1`. The answer must be a list with length 1.
 
 ```{r}
 list1[1]
 ```
 
-- Теперь найдите содержание первого элемента списка `list1` двумя разными способами. Ответ должен быть вектором.
+- Extract the content of the first element of `list1` by two different ways. The answer must be a vector.
 
 ```{r}
 list1[[1]]
 list1$numbers
 ```
 
-- Теперь возьмите первый элемент содержания первого элемента списка `list1`. Ответ должен быть вектором.
+- Find the first value from the first item of the list `list1`. The answer must be a vector.
 
 ```{r}
 list1[[1]][1]
 ```
 
-- Создайте список `list2`, содержащий в себе два списка `list1`. Один из них будет иметь имя `pupa`, а другой --- `lupa`.
+- Create a list `list2`, that contains two lists `list1`. One of them must be named `pupa`, the second one --- `lupa`.
 
 ```{r}
 list2 = list(pupa = list1, lupa = list1)
 list2
 ```
 
-- *Извлеките первый элемент списка `list2`, из него --- второй полэлемент, а из него --- третье значение.
+- *Extract the first item of the `list2`, then extract the second item from this item, and then extract the third value of it.
 
 ```{r}
 list2[[1]][[2]][3]

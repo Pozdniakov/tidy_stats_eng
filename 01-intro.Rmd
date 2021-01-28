@@ -1,4 +1,4 @@
-# Install R {#intro}
+# Introduction to R {#intro}
 
 ## Install R & Rstudio {#install}
 
