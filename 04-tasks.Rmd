@@ -967,7 +967,7 @@ prime_numbers(200)
 
 ## magrittr::`%>%` {#task_pipe}
 
-- Перепишите следующие выражения, используя `%>%`:
+- Rewrite the following sentences using pipe `%>%`:
 
 ```{r, echo = TRUE}
 sqrt(sum(1:10))
@@ -1000,10 +1000,10 @@ c("Корень из", 2, "равен", sqrt(2))
 
 
 
-##Выбор столбцов: `dplyr::select()` {#task_select}
+##Columns selection: `dplyr::select()` {#task_select}
 
+For solving the next tasks you will need datasets `heroes` and `powers` that you can import using the following commands:
 
-Для выполнения следующих заданий нам понадобятся датасеты `heroes` и `powers`, которые можно загрузить, используя следующие команды:
 
 ```{r, echo = TRUE}
 library(tidyverse)
@@ -1012,44 +1012,44 @@ heroes <- read_csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/mast
 powers <- read_csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/master/data/super_hero_powers.csv")
 ```
 
-- Выберете первые 4 столбца в `powers`.
+- Select the first 4 columns from `powers`.
 
 ```{r}
 powers %>%
   select(1:4)
 ```
 
-- Выберите все столбцы от `Reflexes` до `Empathy` в тиббле `powers`:
+- Select all columns from `Reflexes` to `Empathy` in the tibble `powers`:
 
 ```{r}
 powers %>%
   select(Reflexes:Empathy)
 ```
 
-- Выберите все столбцы тиббла `powers` кроме первого (`hero_names`):
+- Select all columns from the tibble `powers` except the first one (`hero_names`):
 
 ```{r}
 powers %>%
 select(!hero_names)
 ```
 
-##Выбор строк: `dplyr::slice()` и `dplyr::filter()` {#task_filt}
+##Rows selection: `dplyr::slice()` and `dplyr::filter()` {#task_filt}
 
-- Выберите только те строчки, в которых содержится информация о супергероях тяжелее 500 кг.
+- Extract rows that contain information about superheroes which have weight more than 500 kg.
 
 ```{r}
 heroes %>% 
   filter(Weight > 500)
 ```
 
-- Выберите только те строчки, в которых содержится информация о *женщинах*-супергероях тяжелее 500 кг.
+- Extract rows that contain information about *female* superheroes which have weight more than 500 kg.
 
 ```{r}
 heroes %>% 
   filter(Weight > 500 & Gender == "Female")
 ```
 
-- Выберите только те строчки, в которых содержится информация о супергероях человеческой расы (`"Human"`) женского пола. Из этих супергероев возьмите первые 5.
+- Extract rows that contain information about *human* (race is equal to `"Human"`) *female* superheroes which have weight more than 500 kg. Select the first 5 rows from that.
 
 ```{r}
 heroes %>% 
@@ -1058,9 +1058,9 @@ heroes %>%
 ```
 
 
-## Сортировка строк: `dplyr::arrange()` {#task_arr}
+## Rows sorting: `dplyr::arrange()` {#task_arr}
 
-- Выберите из тиббла `heroes` колонки `name`, `Gender`, `Height` и отсортируйте строчки *по возрастанию* `Height`.
+- Select columns `name`, `Gender`, `Height` for the tibble `heroes` and sort them by `Height` in *increasing* order.
 
 ```{r}
 heroes %>%
@@ -1068,7 +1068,7 @@ heroes %>%
   arrange(Height)
 ```
 
-- Выберите из тиббла `heroes` колонки `name`, `Gender`, `Height` и отсортируйте строчки *по убыванию* `Height`.
+- Select columns `name`, `Gender`, `Height` for the tibble `heroes` and sort them by `Height` in *decreasing* order.
 
 ```{r}
 heroes %>%
@@ -1076,9 +1076,7 @@ heroes %>%
   arrange(desc(Height))
 ```
 
-
-- Выберите из тиббла `heroes` колонки `name`, `Gender`, `Height` и отсортируйте строчки сначала по `Gender`, затем *по убыванию* `Height`.
-
+- Select columns `name`, `Gender`, `Height` for the tibble `heroes` and sort them first by `Gender`, then by `Height` in *decreasing* order.
 
 ```{r}
 heroes %>%
@@ -1086,25 +1084,25 @@ heroes %>%
   arrange(Gender, desc(Height))
 ```
 
-## Уникальные значения: `dplyr::distinct()` {#task_dist}
+## Unique values: `dplyr::distinct()` {#task_dist}
 
-- Извлеките уникальные значения столбца `Eye color` из тиббла `heroes`.
+- Exctract unique values from column `Eye color` in `heroes`.
 
 ```{r}
 heroes %>%
   distinct(`Eye color`)
 ```
 
-- Извлеките уникальные значения столбца `Hair color` из тиббла `heroes`.
+- Exctract unique values from column `Hair color` in `heroes`.
 
 ```{r}
 heroes %>%
   distinct(`Hair color`)
 ```
 
-## Создание колонок: `dplyr::mutate()` и `dplyr::transmute()` {#task_mutate}
+## Making new columns: `dplyr::mutate()` and `dplyr::transmute()` {#task_mutate}
 
-- Создайте колонку `height_m` с ростом супергероев в метрах, затем выберите только колонки `name` и `height_m`.
+- Create new column `height_m` with height of superheroes in meters, then select `name` and `height_m` columns.
 
 ```{r}
 heroes %>%
@@ -1112,17 +1110,9 @@ heroes %>%
   select(name, height_m)
 ```
 
-- Создайте новою колонку `hair` в heroes, в которой будет значение `"Bold"` для тех супергероев, у которых в колонке `Hair.color` стоит `"No Hair"`, и значение `"Hairy"` во всех остальных случаях. Затем выберите только колонки `name`, `Hair color`, `hair`.
+## Aggregation: `dplyr::group_by() %>% summarise()` {#task_group_by}
 
-```{r}
-heroes %>%
-  mutate(hair = ifelse(`Hair color` == "No Hair", "Bold", "Hairy")) %>%
-  select(name, `Hair color`, hair)
-```
-
-## Агрегация: `dplyr::group_by() %>% summarise()` {#task_group_by}
-
-- Посчитайте количество супергероев по расам и отсортируйте по убыванию. Извлеките первые 5 строк.
+- Calculate number of superheroes by races and sort it in decreasing order. Extract the first 5 rows.
 
 ```{r}
 heroes %>%
@@ -1130,7 +1120,7 @@ heroes %>%
   slice(1:5)
 ```
 
-- Посчитайте средний пост по полу.
+- Calculate the average height by gender.
 
 ```{r}
 heroes %>%
@@ -1156,28 +1146,6 @@ na_n <- function(x) sum(is.na(x))
 heroes %>%
   group_by(Gender) %>%
   summarise(across(ends_with("color"), na_n))
-```
-
-- Создайте из тиббла `heroes` новый тиббл с колонками `name`, `Height` и `Weight`, где для каждого героя содержится значение `"выше среднего"`, если его рост или вес выше среднего по колонке и `"ниже среднего"`, если ниже или равен среднему.
-
-```{r}
-higher_than_average <- function(x) ifelse(x > mean(x, na.rm = TRUE),
-                                          "выше среднего",
-                                          "ниже среднего")
-heroes %>%
-  transmute(name, 
-            across(c(Height, Weight), 
-                   higher_than_average))
-```
-
-- Создайте из тиббла `heroes` новый тиббл с колонками `Gender`, `name`, `Height` и `Weight`, где для каждого героя содержится значение `"выше среднего"`, если его рост или вес выше среднего по колонке и `"ниже среднего"`, если ниже или равен среднему *внутри соответствующей группы по полу*.
-
-```{r}
-heroes %>%
-  group_by(Gender) %>%
-  transmute(name, 
-            across(c(Height, Weight), 
-                   higher_than_average))
 ```
 
 ## Соединение датафреймов: *_join {#task_join}
