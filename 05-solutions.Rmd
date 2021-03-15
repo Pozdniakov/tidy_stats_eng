@@ -965,16 +965,15 @@ prime_numbers <- function(x) (2:x)[sapply(2:x, is_prime)]
 prime_numbers(200)
 ```
 
+## magrittr::`%>%` {#task_pipe}
 
-## magrittr::`%>%` {#solution_pipe}
-
-- Перепишите следующие выражения, используя `%>%`:
+- Rewrite the following sentences using pipe `%>%`:
 
 ```{r, echo = TRUE}
 sqrt(sum(1:10))
 ```
 
-```{r}
+```{r, results='hide'}
 1:10 %>%
   sum() %>%
   sqrt()
@@ -985,7 +984,7 @@ sqrt(sum(1:10))
 abs(min(-5:5))
 ```
 
-```{r}
+```{r, results='hide'}
 -5:5 %>%
   min() %>%
   abs()
@@ -995,14 +994,16 @@ abs(min(-5:5))
 c("Корень из", 2, "равен", sqrt(2))
 ```
 
-```{r}
+```{r, results='hide'}
 2 %>% c("Корень из", ., "равен", sqrt(.))
 ```
 
 
-##Выбор столбцов: `dplyr::select()` {#solution_select}
 
-Для выполнения следующих заданий нам понадобятся датасеты `heroes` и `powers`, которые можно загрузить, используя следующие команды:
+## Columns selection: `dplyr::select()` {#solution_select}
+
+For solving the next tasks you will need datasets `heroes` and `powers` that you can import using the following commands:
+
 
 ```{r, echo = TRUE}
 library(tidyverse)
@@ -1011,22 +1012,21 @@ heroes <- read_csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/mast
 powers <- read_csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/master/data/super_hero_powers.csv")
 ```
 
-
-- Выберете первые 4 столбца в `powers`.
+- Select the first 4 columns from `powers`.
 
 ```{r}
 powers %>%
   select(1:4)
 ```
 
-- Выберите все столбцы от `Reflexes` до `Empathy` в тиббле `powers`:
+- Select all columns from `Reflexes` to `Empathy` in the tibble `powers`:
 
 ```{r}
 powers %>%
   select(Reflexes:Empathy)
 ```
 
-- Выберите все столбцы тиббла `powers` кроме первого (`hero_names`):
+- Select all columns from the tibble `powers` except the first one (`hero_names`):
 
 ```{r}
 powers %>%
@@ -1034,34 +1034,34 @@ select(!hero_names)
 ```
 
 
-##Выбор строк: `dplyr::slice()` и `dplyr::filter()` {#solution_filt}
+## Rows selection: `dplyr::slice()` and `dplyr::filter()` {#solution_filt}
 
-- Выберите только те строчки, в которых содержится информация о супергероях тяжелее 500 кг.
+- Extract rows that contain information about superheroes which have weight more than 500 kg.
 
 ```{r}
 heroes %>% 
   filter(Weight > 500)
 ```
 
-- Выберите только те строчки, в которых содержится информация о *женщинах*-супергероях тяжелее 500 кг.
+- Extract rows that contain information about *female* superheroes which have weight more than 500 kg.
 
 ```{r}
 heroes %>% 
   filter(Weight > 500 & Gender == "Female")
 ```
 
-- Выберите только те строчки, в которых содержится информация о супергероях человеческой расы (`"Human"`) женского пола. Из этих супергероев возьмите первые 5.
+- Extract rows that contain information about *human* (race is equal to `"Human"`) *female* superheroes which have weight more than 500 kg. Select the first 5 rows from that.
 
 ```{r}
 heroes %>% 
   filter(Race == "Human" & Gender == "Female") %>%
   slice(1:5)
 ```
- 
 
-## Сортировка строк: `dplyr::arrange()` {#solution_arr}
 
-- Выберите из тиббла `heroes` колонки `name`, `Gender`, `Height` и отсортируйте строчки *по возрастанию* `Height`.
+## Rows sorting: `dplyr::arrange()` {#solution_arr}
+
+- Select columns `name`, `Gender`, `Height` for the tibble `heroes` and sort them by `Height` in *increasing* order.
 
 ```{r}
 heroes %>%
@@ -1069,7 +1069,7 @@ heroes %>%
   arrange(Height)
 ```
 
-- Выберите из тиббла `heroes` колонки `name`, `Gender`, `Height` и отсортируйте строчки *по убыванию* `Height`.
+- Select columns `name`, `Gender`, `Height` for the tibble `heroes` and sort them by `Height` in *decreasing* order.
 
 ```{r}
 heroes %>%
@@ -1077,9 +1077,7 @@ heroes %>%
   arrange(desc(Height))
 ```
 
-
-- Выберите из тиббла `heroes` колонки `name`, `Gender`, `Height` и отсортируйте строчки сначала по `Gender`, затем *по убыванию* `Height`.
-
+- Select columns `name`, `Gender`, `Height` for the tibble `heroes` and sort them first by `Gender`, then by `Height` in *decreasing* order.
 
 ```{r}
 heroes %>%
@@ -1087,25 +1085,25 @@ heroes %>%
   arrange(Gender, desc(Height))
 ```
 
-## Уникальные значения: `dplyr::distinct()` {#solution_dist}
+## Unique values: `dplyr::distinct()` {#task_dist}
 
-- Извлеките уникальные значения столбца `Eye color` из тиббла `heroes`.
+- Exctract unique values from column `Eye color` in `heroes`.
 
 ```{r}
 heroes %>%
   distinct(`Eye color`)
 ```
 
-- Извлеките уникальные значения столбца `Hair color` из тиббла `heroes`.
+- Exctract unique values from column `Hair color` in `heroes`.
 
 ```{r}
 heroes %>%
   distinct(`Hair color`)
 ```
 
-## Создание колонок: `dplyr::mutate()` и `dplyr::transmute()` {#solution_mutate}
+## Making new columns: `dplyr::mutate()` and `dplyr::transmute()` {#solution_mutate}
 
-- Создайте колонку `height_m` с ростом супергероев в метрах, затем выберите только колонки `name` и `height_m`.
+- Create new column `height_m` with height of superheroes in meters, then select `name` and `height_m` columns.
 
 ```{r}
 heroes %>%
@@ -1113,17 +1111,8 @@ heroes %>%
   select(name, height_m)
 ```
 
-- Создайте новою колонку hair в heroes, в которой будет значение "Bold" для тех супергероев, у которых в колонке Hair.color стоит "No Hair", и значение "Hairy" во всех остальных случаях. Затем выберите только колонки `name`, `Hair color`, `hair`.
-
-```{r}
-heroes %>%
-  mutate(hair = ifelse(`Hair color` == "No Hair", "Bold", "Hairy")) %>%
-  select(name, `Hair color`, hair)
-```
-
 ## Агрегация: `dplyr::group_by() %>% summarise()` {#solution_group_by}
-
-- Посчитайте количество супергероев по расам и отсортируйте по убыванию. Извлеките первые 5 строк.
+- Calculate number of superheroes by races and sort it in decreasing order. Extract the first 5 rows.
 
 ```{r}
 heroes %>%
@@ -1131,7 +1120,7 @@ heroes %>%
   slice(1:5)
 ```
 
-- Посчитайте средний пост по полу.
+- Calculate the average height by gender.
 
 ```{r}
 heroes %>%
@@ -1139,9 +1128,9 @@ heroes %>%
   summarise(height_mean = mean(Height, na.rm = TRUE))
 ```
 
-## Операции с несколькими колонками: `across()` {#solution_across}
+## Operations with several columns: `across()` {#solution_across}
 
-- Посчитайте количество `NA` в каждой колонке, группируя по полу (`Gender`).
+- Count number of `NA` in each column, grouping by `Gender`.
 
 ```{r}
 na_n <- function(x) sum(is.na(x))
@@ -1150,7 +1139,7 @@ heroes %>%
   summarise(across(everything(), na_n))
 ```
 
-- Посчитайте количество `NA` в каждой колонке, которая заканчивается на `"color"`, группируя по полу (`Gender`).
+-  Count number of `NA` in each column that ends with `"color"`, grouping by `Gender`.
 
 ```{r}
 na_n <- function(x) sum(is.na(x))
@@ -1159,9 +1148,9 @@ heroes %>%
   summarise(across(ends_with("color"), na_n))
 ```
 
-## Соединение датафреймов: *_join {#solution_join}
+## Merging dataframes: *_join {#solution_join}
 
-Создайте тиббл `web_creators`, в котором будут супергерои, которые могут плести паутину, т.е. у них стоит `TRUE` в колонке `Web Creation` в тиббле `powers`.
+- Create a tibble `web creators` such that it contains only superheroes that can create web, i.e. they have `TRUE` in column `Web Creation` in tibble `powers`.
 
 ```{r}
 powers_web <- powers %>%
@@ -1171,14 +1160,14 @@ web_creators <- left_join(heroes, powers_web, by = c("name" = "hero_names")) %>%
 web_creators
 ```
 
-- Найдите всех супергероев, которые присутствуют в `heroes`, но отсутствуют в `powers`. Ответом должен быть строковый вектор с именами супергероев.
+- Find all superheroes that can be found in `heroes` but are absent in `powers`. The answer must be a character vector with superheroes names.
 
 ```{r}
 anti_join(heroes, powers, by = c("name" = "hero_names")) %>%
   pull(name)
 ```
 
-- Найдите всех супергероев, которые присутствуют в `powers`, но отсутствуют в `heroes`. Ответом должен быть строковый вектор с именами супергероев.
+- Find all superheroes that can be found in `powers` but are absent in `heroes`. The answer must be a character vector with superheroes names.
 
 ```{r}
 anti_join(powers, heroes, by = c("hero_names" = "name")) %>%
@@ -1187,7 +1176,7 @@ anti_join(powers, heroes, by = c("hero_names" = "name")) %>%
 
 ## Tidy data {#solution_join}
 
-- Для начала создайте тиббл `heroes_weight`, скопировав код:
+First, create a tibble `heroes_weight` by copying the following code:
 
 ```{r, echo = TRUE}
 heroes_weight <- heroes %>%
@@ -1198,16 +1187,14 @@ heroes_weight <- heroes %>%
 heroes_weight 
 ```
 
-> Функция `drop_na()` позволяет выбросить все строчки, в которых встречается `NA`.
-
-- Превратите тиббл `heroes_weight` в широкий тиббл:
+- Turn the tibble `heroes_weight` into wide tibble.
 
 ```{r}
 heroes_weight %>%
   pivot_wider(names_from = "Publisher", values_from = "weight_mean")
 ```
 
-- Затем превратите его обратно в длинный тиббл:
+- Then, convert it back to the long format:
 
 ```{r}
 heroes_weight %>%
@@ -1217,7 +1204,7 @@ heroes_weight %>%
                values_to = "weight_mean")
 ```
 
-- Сделайте `powers` длинным тибблом с тремя колонками: `hero_names`, `power` (названгие суперсилы) и `has` (наличие суперсилы у данного супергероя).
+- Turn the tibble `powers` into a long tibble with three columns: `hero_names`, `power` (superpower names) and `has` (does this superhero have this ability?).
 
 ```{r}
 powers %>%
@@ -1226,7 +1213,7 @@ powers %>%
                values_to = "has")
 ```
 
-- Сделайте тиббл `powers` обратно широким, но с новой структурой: каждая строчка означает суперсилу, а каждая колонка - супергероя (за исключением первой колонки - названия суперсилы).
+- Turn the tibble `powers` into wide form again but with the new structure: each row is a superpower, each column is a superhero (except for the first column - superpower name).
 
 ```{r}
 powers %>%

@@ -1000,7 +1000,7 @@ c("Корень из", 2, "равен", sqrt(2))
 
 
 
-##Columns selection: `dplyr::select()` {#task_select}
+## Columns selection: `dplyr::select()` {#task_select}
 
 For solving the next tasks you will need datasets `heroes` and `powers` that you can import using the following commands:
 
@@ -1033,7 +1033,7 @@ powers %>%
 select(!hero_names)
 ```
 
-##Rows selection: `dplyr::slice()` and `dplyr::filter()` {#task_filt}
+## Rows selection: `dplyr::slice()` and `dplyr::filter()` {#task_filt}
 
 - Extract rows that contain information about superheroes which have weight more than 500 kg.
 
@@ -1160,14 +1160,14 @@ web_creators <- left_join(heroes, powers_web, by = c("name" = "hero_names")) %>%
 web_creators
 ```
 
-- Найдите всех супергероев, которые присутствуют в `heroes`, но отсутствуют в `powers`. Ответом должен быть строковый вектор с именами супергероев.
+- Find all superheroes that can be found in `heroes` but are absent in `powers`. The answer must be a character vector with superheroes names.
 
 ```{r}
 anti_join(heroes, powers, by = c("name" = "hero_names")) %>%
   pull(name)
 ```
 
-- Найдите всех супергероев, которые присутствуют в `powers`, но отсутствуют в `heroes`. Ответом должен быть строковый вектор с именами супергероев.
+- Find all superheroes that can be found in `powers` but are absent in `heroes`. The answer must be a character vector with superheroes names.
 
 ```{r}
 anti_join(powers, heroes, by = c("hero_names" = "name")) %>%
@@ -1176,7 +1176,7 @@ anti_join(powers, heroes, by = c("hero_names" = "name")) %>%
 
 ## Tidy data {#task_join}
 
-- Для начала создайте тиббл `heroes_weight`, скопировав код:
+First, create a tibble `heroes_weight` by copying the following code:
 
 ```{r, echo = TRUE}
 heroes_weight <- heroes %>%
@@ -1187,16 +1187,14 @@ heroes_weight <- heroes %>%
 heroes_weight 
 ```
 
-> Функция `drop_na()` позволяет выбросить все строчки, в которых встречается `NA`.
-
-- Превратите тиббл `heroes_weight` в широкий тиббл:
+- Turn the tibble `heroes_weight` into wide tibble.
 
 ```{r}
 heroes_weight %>%
   pivot_wider(names_from = "Publisher", values_from = "weight_mean")
 ```
 
-- Затем превратите его обратно в длинный тиббл:
+- Then, convert it back to the long format:
 
 ```{r}
 heroes_weight %>%
@@ -1206,7 +1204,7 @@ heroes_weight %>%
                values_to = "weight_mean")
 ```
 
-- Сделайте `powers` длинным тибблом с тремя колонками: `hero_names`, `power` (названгие суперсилы) и `has` (наличие суперсилы у данного супергероя).
+- Turn the tibble `powers` into a long tibble with three columns: `hero_names`, `power` (superpower names) and `has` (does this superhero have this ability?).
 
 ```{r}
 powers %>%
@@ -1215,7 +1213,7 @@ powers %>%
                values_to = "has")
 ```
 
-- Сделайте тиббл `powers` обратно широким, но с новой структурой: каждая строчка означает суперсилу, а каждая колонка - супергероя (за исключением первой колонки - названия суперсилы).
+- Turn the tibble `powers` into wide form again but with the new structure: each row is a superpower, each column is a superhero (except for the first column - superpower name).
 
 ```{r}
 powers %>%

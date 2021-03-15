@@ -5,7 +5,7 @@ tab:unnamed-chunk-308
 tab:unnamed-chunk-411
 fig:unnamed-chunk-443
 tab:unnamed-chunk-668
-tab:unnamed-chunk-870
+tab:unnamed-chunk-869
 about-the-online-book
 intro
 install
@@ -203,6 +203,8 @@ task_if
 task_function
 task_apply
 task_pipe
+task_select
+task_filt
 task_arr
 task_dist
 task_mutate
@@ -232,13 +234,13 @@ solution_df
 solution_if
 solution_function
 solution_apply
-solution_pipe
+solution_select
+solution_filt
 solution_arr
-solution_dist
 solution_mutate
 solution_group_by
 solution_across
-соединение-датафреймов-_join-solution_join
+merging-dataframes-_join-solution_join
 solution_join
 ggplot2_solutions
 dist_solutions
