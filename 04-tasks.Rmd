@@ -1128,9 +1128,9 @@ heroes %>%
   summarise(height_mean = mean(Height, na.rm = TRUE))
 ```
 
-## Операции с несколькими колонками: `across()` {#task_across}
+## Operations with several columns: `across()` {#task_across}
 
-- Посчитайте количество `NA` в каждой колонке, группируя по полу (`Gender`).
+- Count number of `NA` in each column, grouping by `Gender`.
 
 ```{r}
 na_n <- function(x) sum(is.na(x))
@@ -1139,7 +1139,7 @@ heroes %>%
   summarise(across(everything(), na_n))
 ```
 
-- Посчитайте количество `NA` в каждой колонке, которая заканчивается на `"color"`, группируя по полу (`Gender`).
+-  Count number of `NA` in each column that ends with `"color"`, grouping by `Gender`.
 
 ```{r}
 na_n <- function(x) sum(is.na(x))
@@ -1148,9 +1148,9 @@ heroes %>%
   summarise(across(ends_with("color"), na_n))
 ```
 
-## Соединение датафреймов: *_join {#task_join}
+## Merging dataframes: *_join {#task_join}
 
-- Создайте тиббл `web_creators`, в котором будут супергерои, которые могут плести паутину, т.е. у них стоит `TRUE` в колонке `Web Creation` в тиббле `powers`.
+- Create a tibble `web creators` such that it contains only superheroes that can create web, i.e. they have `TRUE` in column `Web Creation` in tibble `powers`.
 
 ```{r}
 powers_web <- powers %>%

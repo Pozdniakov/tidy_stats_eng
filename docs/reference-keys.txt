@@ -208,7 +208,7 @@ task_dist
 task_mutate
 task_group_by
 task_across
-соединение-датафреймов-_join-task_join
+merging-dataframes-_join-task_join
 task_join
 desc_tasks
 ggplot2_tasks
